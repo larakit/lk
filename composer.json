@@ -1,0 +1,43 @@
+{
+    "name": "larakit/lk",
+    "description": "[Larakit] Набор инструментов для Laravel",
+    "keywords": [
+        "laravel 5",
+        "laravel",
+        "larakit"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Berdnikov",
+            "email": "aberdnikov@gmail.com"
+        }
+    ],
+    "require": {
+        "way/generators": "*",
+        "barryvdh/laravel-ide-helper": "*",
+        "barryvdh/laravel-debugbar": "*",
+        "larapack/dd": "1.*",
+        "ezyang/htmlpurifier": "4.7.0",
+        "laravelrus/localized-carbon": "*",
+        "larakit/lk-spa": "*",
+        "larakit/lk-quickform": "*",
+        "larakit/lk-webconfig": "*",
+        "larakit/lk-route": "*",
+        "larakit/lk-page": "*",
+        "larakit/lk-thumbs": "*",
+        "larakit/lk-staticfiles": "*",
+        "larakit/cmd-backup": "*",
+        "larakit/beerhold": "*",
+        "larakit/cmd-vcs": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Larakit\\": "src"
+        },
+        "files": [
+            "src/init.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
