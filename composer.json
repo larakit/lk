@@ -21,6 +21,8 @@
         "ezyang/htmlpurifier": "4.7.0",
         "laravelrus/localized-carbon": "*",
         
+        "larakit/sf-larakit-js": "*",
+
         "larakit/lk-quickform": "*",
         "larakit/lk-route": "*",
         "larakit/lk-page": "*",
