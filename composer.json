@@ -20,16 +20,16 @@
         "larapack/dd": "1.*",
         "ezyang/htmlpurifier": "4.7.0",
         "laravelrus/localized-carbon": "*",
-        "larakit/lk-spa": "*",
+        
         "larakit/lk-quickform": "*",
-        "larakit/lk-webconfig": "*",
         "larakit/lk-route": "*",
         "larakit/lk-page": "*",
-        "larakit/lk-thumbs": "*",
         "larakit/lk-staticfiles": "*",
+        
         "larakit/cmd-backup": "*",
-        "larakit/beerhold": "*",
-        "larakit/cmd-vcs": "*"
+        "larakit/cmd-vcs": "*",
+        
+        "larakit/hlp-beerhold": "*"
     },
     "autoload": {
         "psr-0": {
