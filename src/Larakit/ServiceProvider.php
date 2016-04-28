@@ -4,6 +4,7 @@ namespace Larakit;
 use Illuminate\Support\Arr;
 use Larakit\Manager\ManagerPackage;
 use Larakit\Manager\ManagerPackageMigration;
+use Larakit\Page\PageTheme;
 use Larakit\Page\Theme;
 
 abstract class ServiceProvider extends \Illuminate\Support\ServiceProvider {
@@ -15,7 +16,7 @@ abstract class ServiceProvider extends \Illuminate\Support\ServiceProvider {
         }
 //        Theme::set('bunkermedia');
         //если назначена кастомная тема оформления
-        if ($theme = Theme::get()) {
+        if ($theme = PageTheme::getCurrent()) {
             /// если переопределены шаблоны вьюх для указанной темы
             $theme_views_dir = base_path('vendor/' . $package . '/src/views/!/themes/' . $theme);
             if (file_exists($theme_views_dir)) {
