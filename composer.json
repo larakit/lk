@@ -2,8 +2,8 @@
     "name": "larakit/lk",
     "description": "[Larakit] Набор инструментов для Laravel",
     "keywords": [
-        "laravel 5",
         "laravel",
+        "laravel 5",
         "larakit"
     ],
     "license": "MIT",
