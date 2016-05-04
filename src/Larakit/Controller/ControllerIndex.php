@@ -1,23 +1,12 @@
 <?php
 namespace Larakit\Controller;
 
-use Bmmaket\Core\Model\Target;
-use Illuminate\Database\Schema\Blueprint;
-use Larakit\Attach;
 use Larakit\Base\Controller;
-use Larakit\Page\Page;
-use Larakit\Route\Route;
-use Larakit\Model\User;
-use Larakit\Thumb;
-use Larakit\User\Me;
-use Larakit\Webconfig;
-use Larakit\Widget\WidgetFlash;
 
 class ControllerIndex extends Controller {
     protected $layout = 'larakit::!.layouts.public';
 
     function __construct() {
-        Page::body()->addClass(Webconfig::get('app.body_class'));
         $this->addBreadCrumb('home');
     }
 
