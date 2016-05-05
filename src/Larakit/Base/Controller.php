@@ -39,7 +39,6 @@ class Controller extends \Illuminate\Routing\Controller{
             $vars['base_url'] = $this->base_url;
         }
         $layout = \View::make($this->layout, $vars);
-
         return \View::make($this->page, [
             'layout' => $layout
         ]);
