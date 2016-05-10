@@ -29,6 +29,12 @@ abstract class ServiceProvider extends \Illuminate\Support\ServiceProvider {
             $this->loadViewsFrom($view_dir, $alias);
         }
 
+        //базовые шаблоны пакета
+        $lang_dir = base_path('vendor/' . $package . '/src/lang');
+        if (file_exists($view_dir)) {
+            $this->loadTranslationsFrom($lang_dir, $alias);
+        }
+
 
         //регистрируем миграции
         if (is_dir(base_path('vendor/' . $package . '/src/migrations'))) {
