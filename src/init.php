@@ -1,7 +1,7 @@
 <?php
 //регистрируем провайдеры
-Larakit\SPA::register_provider(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-Larakit\SPA::register_provider(\Larakit\LarakitServiceProvider::class);
+Larakit\Boot::register_provider(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+Larakit\Boot::register_provider(\Larakit\LarakitServiceProvider::class);
 
 
 if (!function_exists('rglob')) {
