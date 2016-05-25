@@ -52,9 +52,9 @@ class Readiness extends Command {
         $last          = null;
         $items         = [];
         foreach (\Route::getRoutes() as $r => $route) {
-            if (!\Larakit\Route\Route::isEnable($route->getName())) {
-                continue;
-            }
+//            if (!\Larakit\Route\Route::isEnable($route->getName())) {
+//                continue;
+//            }
             /**
              * @var Route $route
              */
