@@ -31,8 +31,11 @@ abstract class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 
         //базовые шаблоны пакета
         $lang_dir = base_path('vendor/' . $package . '/src/lang');
-        if (file_exists($view_dir)) {
+        if (file_exists($lang_dir)) {
             $this->loadTranslationsFrom($lang_dir, $alias);
+            $this->publishes([
+                $lang_dir => resource_path('lang/vendor/'.$alias),
+            ]);
         }
 
 
