@@ -14,7 +14,6 @@ abstract class ServiceProvider extends \Illuminate\Support\ServiceProvider {
         if (!$alias) {
             $alias = $package;
         }
-//        Theme::set('bunkermedia');
         //если назначена кастомная тема оформления
         if ($theme = PageTheme::getCurrent()) {
             /// если переопределены шаблоны вьюх для указанной темы
