@@ -45,28 +45,27 @@ class FormFilter {
 
     function toArray() {
         $this->init();
-        $box = $this->form->putAlteBox('Фильтры списка');
+        $box  = $this->form->putAlteBox('Фильтры списка');
         $body = $box->putAlteBoxBody()->removeClass('box-primary');
         foreach($this->filters as $filter) {
             /* @var $filter FilterSelfLike */
             $filter->element($body);
-            if($filter->value){
-                $filter->query($this->model);
-            }
+            $filter->query($this->model);
         }
-        if($this->form->isSubmitted()){
+        if($this->form->isSubmitted()) {
             $box->addClass('box-solid box-success');
         } else {
             $box->addClass('box-default');
         }
         $footer = $box->putAlteBoxFooter();
-        $footer->putSubmitTwbs('Применить')->addClass('btn-success');
-        $footer->putLinkTwbs('Сбросить')->addClass('btn-default');
+        $footer->putSubmitTwbs('Применить')->addClass('btn-success btn-disabled col-lg-6');
+        $footer->putButtonLinkTwbs($this->base_url, 'Сбросить')->addClass('btn-default col-lg-6');
+
 //        ->removeClass('box-primary');
 
         return [
             'form_filter' => $this->form,
-            'models' => $this->model->paginate($this->per_page),
+            'models'      => $this->model->paginate($this->per_page),
         ];
     }
 
