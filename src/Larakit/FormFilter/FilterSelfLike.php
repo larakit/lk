@@ -16,7 +16,7 @@ class FilterSelfLike {
     protected $db_field;
     protected $form_field;
     protected $label;
-    protected $value;
+    public $value;
 
     function __construct($form_field, $label, $db_field = null) {
         $this->form_field = $form_field;
@@ -38,13 +38,13 @@ class FilterSelfLike {
         return new $class($form_field, $label, $db_field);
     }
 
-    function element(LaraForm $form) {
+    function element(\HTML_QuickForm2_Container $form) {
         $form->putTextTwbs($this->form_field)
             ->setLabel($this->label);
 
     }
 
-    function query(\Eloquent $model) {
+    function query($model) {
         $model->where(function ($query) {
             $query->where($this->db_field, 'like', '%' . $this->value . '%');
         });
