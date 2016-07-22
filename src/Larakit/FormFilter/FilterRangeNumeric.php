@@ -12,16 +12,18 @@ namespace Larakit\FormFilter;
 use Illuminate\Support\Arr;
 use Larakit\QuickForm\LaraForm;
 
-class FilterBetween extends Filter {
+class FilterRangeNumeric extends Filter {
 
     function element(\HTML_QuickForm2_Container $form) {
         $gr = $form->putGroupTwbs($this->form_field)
             ->setLabel($this->label . ($this->units ? ', ' . $this->units : ''));
         $gr->putNumberTwbs('from')
             ->setPrepend('от')
+            ->setAppendClear()
             ->setWrapClass('col-lg-6');
         $gr->putNumberTwbs('to')
             ->setPrepend('до')
+            ->setAppendClear()
             ->setWrapClass('col-lg-6');
     }
 

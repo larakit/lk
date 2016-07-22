@@ -1,0 +1,7 @@
+.filter-daterange-block .help-block span {
+    border-bottom: 1px dashed #f4645f;
+    color: #f4645f;
+    cursor: pointer;
+    margin: 0 5px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
