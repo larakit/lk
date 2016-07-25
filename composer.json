@@ -15,38 +15,36 @@
     ],
     "require": {
         "larakit/lk-twig": "*",
+        "larakit/lk-html": "*",
+        "larakit/lk-event": "*",
+        "larakit/lk-validatebuilder": "*",
+        "larakit/lk-staticfiles": "*",
+
+        "larakit/cmd-backup": "*",
+        "larakit/cmd-vcs": "*",
+
+        "larakit/hlp-beerhold": "*",
+
+        "larakit/sf-larakit-js": "*",
         "larakit/sf-bootstrap":"*",
         "larakit/sf-angular-ui-bootstrap":"*",
         "larakit/sf-bootstrap-daterangepicker":"*",
         "larakit/sf-bootstrap-datetimepicker":"*",
         "larakit/sf-bootstrap-select2":"*",
         "larakit/sf-bootstrap-switch":"*",
-        "pear/html_quickform2": "*",
-        "larakit/lk-html": "*",
-        "larakit/lk-event": "*",
-        "larakit/lk-validatebuilder": "*",
 
+        "pear/html_quickform2": "*",
         "way/generators": "*",
         "barryvdh/laravel-ide-helper": "*",
         "barryvdh/laravel-debugbar": "*",
         "larapack/dd": "1.*",
         "ezyang/htmlpurifier": "4.7.0",
-        "laravelrus/localized-carbon": "*",
-        
-        "larakit/sf-larakit-js": "*",
-
-        "larakit/lk-route": "*",
-        "larakit/lk-page": "*",
-        "larakit/lk-staticfiles": "*",
-        
-        "larakit/cmd-backup": "*",
-        "larakit/cmd-vcs": "*",
-        
-        "larakit/hlp-beerhold": "*"
+        "laravelrus/localized-carbon": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Larakit\\": "src"
+        "psr-4": {
+            "Larakit\\": "src/Larakit",
+            "Adminlte\\": "src/Adminlte"
         },
         "files": [
             "src/init.php"
