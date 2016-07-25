@@ -1,0 +1,26 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start group_radio_button -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-12 {{ laraform.element_wrap_success_error(element, is_submited) }}">
+            {{ laraform.element_label(element)|raw }}
+        </div>
+        <div class="col-lg-12">
+            <div class="btn-group" data-toggle="buttons">
+                {% for el in element.elements %}
+                    <label class="btn btn-default{{ el.checked ? ' active' : '' }}">
+                        {{ el.html|raw }} {{ el.label|raw }}
+                    </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-12">
+            {{ laraform.element_error(element) }}
+            {{ laraform.element_desc(element) }}
+        </div>
+    </div>
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end group_radio_button -->

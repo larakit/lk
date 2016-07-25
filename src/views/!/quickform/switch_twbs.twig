@@ -1,0 +1,16 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start tb_switch -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group">
+    <div class="{% if element.error %} has-error{% endif %}">
+        {{ element.html|raw }}
+        <label>
+            {{ element.label|raw }}
+        </label>
+        {{ laraform.element_desc(element) }}
+        {{ laraform.element_error(element) }}
+    </div>
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end tb_switch -->

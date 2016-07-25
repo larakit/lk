@@ -1,0 +1,16 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start text -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group {{ laraform.element_wrap_success_error(element, is_submited) }}">
+    {{ laraform.element_label(element) }}
+    {{ laraform.element_prepend(element) }}
+    {{ element.html|raw }}
+    {{ laraform.element_append(element) }}
+    {{ laraform.element_example(element) }}
+    {{ laraform.element_error(element) }}
+    {{ laraform.element_desc(element) }}
+    {{ laraform.element_blind(element) }}
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end text -->

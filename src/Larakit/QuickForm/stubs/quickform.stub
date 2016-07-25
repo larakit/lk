@@ -1,0 +1,31 @@
+<?php
+namespace DummyNamespace;
+
+use Larakit\QuickForm\ILaraForm;
+use Larakit\QuickForm\LaraForm;
+
+class DummyClass extends LaraForm implements ILaraForm{
+
+    /**
+     * @return LaraForm
+     */
+    static function factory() {
+        return new DummyClass('DummyName');
+    }
+
+    function build() {
+        //$this
+        //    ->putTextTwbs('login')
+        //    ->setExample(['groove', 'user'])
+        //    ->setPlaceholder('larakit')
+        //    ->setPrepend('<i class="fa fa-user"></i>')
+        //    ->setAppend('.habrahabr.ru')
+        //    ->addClass('form-control')
+        //    ->setLabel('Логин')
+        //    ->setDesc('Логин должен быть уникален и длиной не менее 6 символов');
+        //$this
+        //    ->putSubmitTwbs('Зарегистрироваться')
+        //    ->addClass('btn-success btn-lg btn-block');
+    }
+
+}

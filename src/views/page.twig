@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"{% if html_attributes %} {{ html_attributes|raw }}{% endif %}>
+<head>
+    <title>{{ larakit_page_title()|raw }}</title>
+    {{ base|raw }}
+    {% for meta_tag in meta_tags %}
+        {{ meta_tag|raw }}
+    {% endfor %}
+    <!-- CSS -->
+    {{ laracss()|raw }}
+</head>
+<body{% if body_attributes %} {{ body_attributes|raw }}{% endif %}>
+{{ layout|raw }}
+<!-- JS -->
+{{ larajs()|raw }}
+{{ body_appends|raw }}
+</body>
+</html>

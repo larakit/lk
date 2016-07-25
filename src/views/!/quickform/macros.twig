@@ -1,0 +1,125 @@
+{#{{ print_r(javascript) }}#}
+{#{{ print_r(form) }}#}
+
+{# комментарий к элементу #}
+{% macro element_desc(element) %}
+    {% if element.desc and not element.frozen %}
+        <div class="help-block">{{ element.desc|raw }}</div>
+    {% endif %}
+{% endmacro %}
+
+{# ошибки к элементу #}
+{% macro element_error(element) %}
+    {#{% if element.error %}#}
+    <div rel="{{ element.id }}" class="error-block">{{ element.error|trim|raw }}</div>
+    {#{% endif %}#}
+{% endmacro %}
+
+{# blind к элементу #}
+{% macro element_blind(element) %}
+    {#{% if element.error %}#}
+    <div rel="{{ element.id }}" class="js-blind-placeholder"></div>
+    {#{% endif %}#}
+{% endmacro %}
+
+{# example к элементу #}
+{% macro element_example_one(k, v) %}
+    <span class="js-laraform-example" data-value="{{ k }}">{{ v }}</span>
+{% endmacro %}
+
+{% macro element_example(element) %}
+    {% import _self as macro %}
+    {% if element.example and not element.frozen %}
+        <p class="example-block" rel="{{ element.id }}" data-append="{{ element.example_is_append ? 1 : 0 }}">
+            {{ laralang('quickform::quickform.example') }}
+            {% if element.example is array %}
+                {% for example in element.example %}
+                    {% if example is array  %}
+                        {% for k,v in example %}
+                            {{ macro.element_example_one(k,v) }}
+                        {% endfor %}
+                    {% else %}
+                        {{ macro.element_example_one(example, example) }}
+                    {% endif %}
+                    {% if not loop.last %}&nbsp;  {% endif %}
+                {% endfor %}
+            {% else %}
+                {{ macro.element_example_one(element.example, element.example) }}
+            {% endif %}
+        </p>
+    {% endif %}
+{% endmacro %}
+
+{# метка к элементу #}
+{% macro element_label(element) %}
+    {% import _self as macro %}
+    {% if element.elements %}
+        {{ macro.group_label(element)|raw }}
+    {% else %}
+        {% if element.label %}
+            <label class="control-label" for="{{ element.id }}">
+                {% set required_left = env('QUICKFORM:REQUIRED_LEFT', '!') %}
+                {% set required_right = env('QUICKFORM:REQUIRED_RIGHT', '') %}
+                {% if element.required and required_left %}<span class="required">{{ required_left|raw }}</span>{% endif %}
+                {{ element.label|raw }}
+                {% if element.required and required_right %}<span class="required">{{ required_right|raw }}</span>{% endif %}
+            </label>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+{# метка к группе #}
+{% macro group_label(element) %}
+    {% if element.label %}
+        <label class="control-label-group" for="{{ element.id }}">
+            {% if element.required %}<span class="required">*</span>{% endif %}
+            {{ element.label|raw }}</label>
+    {% endif %}
+{% endmacro %}
+
+{# append к элементу #}
+{% macro element_append(element) %}
+    {% if element.append and not element.frozen %}
+        <span class="input-group-addon">{{ element.append|raw }}</span>
+    {% endif %}
+    {% if (element.prepend or element.append) and not element.frozen %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{# prepend к элементу #}
+{% macro element_prepend(element) %}
+    {% if (element.prepend or element.append) and not element.frozen %}
+        <div class="input-group">
+    {% endif %}
+    {% if element.prepend and not element.frozen %}
+        <span class="input-group-addon">{{ element.prepend|raw }}</span>
+    {% endif %}
+{% endmacro %}
+
+{# класс обертки элемента в зависимости от того отправлена ли форма и есть ли ошибки #}
+{% macro element_wrap_success_error(element, is_submited) %}
+    {% if element.error %}has-error{% else %}{% if is_submited %}has-success{% endif %}{% endif %}
+{% endmacro %}
+
+{# wrap к элементу #}
+{% macro element_wrap_start(element) %}
+{% if element.wrap_class %}
+<div class="{{ element.wrap_class }}">
+{% endif %}
+{% endmacro %}
+{% macro element_wrap_end(element) %}
+{% if element.wrap_class %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% macro by_type(element, meta, is_submited) %}
+    {% include element.tpl with {'is_submited': is_submited} %}
+{% endmacro %}
+
+{% macro render_elements(elements, meta, is_submited) %}
+    {% import _self as macro %}
+    {% for id, element in elements %}
+        {{ macro.by_type(element, meta, is_submited)|raw }}
+    {% endfor %}
+{% endmacro %}

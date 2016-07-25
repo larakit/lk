@@ -1,0 +1,17 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start checkbox -->
+{{ laraform.element_wrap_start(element) }}
+{{ laraform.element_prepend(element) }}
+<div class="checkbox{{ element.is_inline ? '-inline':'' }}{% if element.error %} has-error{% endif %}">
+    <label for="{{ element.id }}">
+        {{ element.html|raw }}
+        {{ element.label|raw }}
+    </label>
+    {{ laraform.element_error(element) }}
+    {{ laraform.element_desc(element) }}
+</div>
+{{ laraform.element_append(element) }}
+{{ laraform.element_wrap_end(element) }}
+
+<!-- end checkbox -->

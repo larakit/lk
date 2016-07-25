@@ -1,0 +1,20 @@
+<?php
+exit("This file should not be included, only analyzed by your IDE");
+{% for namespace, classes in data %}
+    namespace {{ namespace }}{
+
+{% for class, methods in classes %}
+        /**
+        * Class {% if namespace %}{{ namespace }}\{% endif %}{{ class }}
+        *
+{% for phpdoc in methods %}
+        {{ phpdoc|raw }}
+{% endfor %}
+        **/
+        class {{ class }}{}
+
+
+{% endfor %}
+
+    }
+{% endfor %}

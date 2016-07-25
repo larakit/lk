@@ -5,9 +5,23 @@ Larakit\Boot::register_provider(\Larakit\LarakitServiceProvider::class);
 
 \Larakit\StaticFiles\Manager::package('larakit/lk')
     ->setSourceDir('public')
+    ->usePackage('pear/html_quickform2', ['hierselect', 'repeat',])
+    ->usePackage('larakit/sf-larakit-js')
     ->usePackage('larakit/sf-larakit-js')
     ->jsPackage('js/filter-daterange.js')
-    ->cssPackage('css/filter-daterange.css');
+    ->jsPackage('js/qf-password-twbs.js')
+    ->jsPackage('js/lk-quickform.js')
+    ->cssPackage('css/filter-daterange.css')
+    ->cssPackage('css/lk-quickform.css')
+;
+
+\Larakit\StaticFiles\Manager::package('larakit/lk-quickform')
+    ->usePackage('pear/html_quickform2', ['hierselect', 'repeat',])
+    ->usePackage('larakit/sf-larakit-js')
+    ->cssPackage('lk-quickform.css')
+    ->jsPackage('qf-password-twbs.js')
+    ->jsPackage('lk-quickform.js')
+    ->setSourceDir('public');
 
 if (!function_exists('rglob')) {
     function rglob($pattern = '*', $flags = 0, $path = false) {
@@ -25,3 +39,6 @@ if (!function_exists('rglob')) {
         return $files;
     }
 }
+include 'init/quickform.php';
+include 'init/page.php';
+include 'init/route.php';

@@ -1,0 +1,23 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start group -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group {{ laraform.element_wrap_success_error(element, is_submited) }}">
+    {{ laraform.element_label(element) }}
+    <div class="row">
+        <div class="col-lg-12">
+            <div{{ element.attributes|raw }}>
+                <div class="row">
+                    {{ laraform.render_elements(element.elements, meta) }}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ laraform.element_desc(element) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end group -->

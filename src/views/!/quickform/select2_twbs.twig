@@ -1,0 +1,16 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start select2 -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group{% if element.error %} has-error{% endif %}">
+    {{ laraform.element_label(element) }}
+    {{ laraform.element_prepend(element) }}
+    <div>{{ element.html|raw }}
+    </div>
+    {{ laraform.element_append(element) }}
+    {{ laraform.element_example(element) }}
+    {{ laraform.element_desc(element) }}
+    {{ laraform.element_blind(element) }}
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end select2 -->

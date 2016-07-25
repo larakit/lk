@@ -1,0 +1,7 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start checkbox -->
+{{ laraform.element_wrap_start(element) }}
+    {{ element.html|raw }}
+{{ laraform.element_wrap_end(element) }}
+<!-- end checkbox -->

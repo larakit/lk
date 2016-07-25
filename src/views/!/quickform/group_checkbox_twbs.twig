@@ -1,0 +1,35 @@
+{% import 'quickform::macros' as laraform %}
+
+<!-- start checkbox_radio -->
+{{ laraform.element_wrap_start(element) }}
+<div class="form-group {{ laraform.element_wrap_success_error(element, is_submited) }}">
+    {{ laraform.element_label(element)|raw }}
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+        <div class="col-lg-12">
+            {% if element.is_inline %}
+                {% for el in element.elements %}
+                    <label class="checkbox-inline">
+                        {{ el.html|raw }} {{ el.label|raw }}
+                    </label>
+                {% endfor %}
+            {% else %}
+                {% for el in element.elements %}
+                    <div class="checkbox">
+                        <label>
+                            {{ el.html|raw }} {{ el.label|raw }}
+                        </label>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-lg-12">
+            {{ laraform.element_error(element) }}
+            {{ laraform.element_desc(element) }}
+        </div>
+    </div>
+</div>
+{{ laraform.element_wrap_end(element) }}
+<!-- end checkbox_radio -->

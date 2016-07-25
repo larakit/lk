@@ -1,0 +1,7 @@
+{% import 'quickform::macros' as laraform %}
+<form {{ form.attributes|raw }}>
+    {% for h in form.hidden %}
+        {{ h|raw }}
+    {% endfor %}
+    {{ laraform.render_elements(form.elements, meta, is_submited)|raw }}
+</form>
