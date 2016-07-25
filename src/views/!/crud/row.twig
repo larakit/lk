@@ -1,0 +1,39 @@
+<div class="box box-default" {{ adminlte__box_wrapper_class(model.id)|raw }}>
+    <div class="box-header with-border">
+        <h3 class="box-title">{{ adminlte__box_toggler(model.id, '[#'~model.id~'] '~model)|raw }}</h3>
+        <div class="box-tools pull-right">
+            {#{{ adminlte__box_toggler(model.id)|raw }}#}
+            <span class="label label-danger ng-binding">{{ model.order|int }}</span>
+            <a ng-click="loaded_pennis{{ model.id }}=!loaded_pennis{{ model.id }}"
+               title="Обновить"
+               class="btn btn-box-tool"><i class="fa fa-spinner fa-spin"></i></a>
+            <a href="{{ base_url }}{{ model.id }}/edit"
+               title="Редактировать"
+               class="js-bootstrap-dialog btn btn-box-tool"><i class="fa fa-pencil"></i></a>
+            <a href="{{ base_url }}{{ model.id }}/delete"
+               title="Удалить"
+               class="js-bootstrap-dialog btn btn-box-tool"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-4">
+                <dl>
+                    <dt>Дата создания</dt>
+                    <dd>{{ date_diff_for_humans(model.created_at) }}</dd>
+                    <dt>Последнее изменение</dt>
+                    <dd>{{ model.updated_at }}</dd>
+                </dl>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-4">
+                <div class="btn-group"><button title="Прикрепить файл" class="btn btn-default js-btn js-init-listjs-btndata-actionattach" data-action="attach"><i class="fa fa-paperclip"></i></button><button class="btn btn-default js-btn js-init-listjs-btndata-actionattach_name" data-action="attach_name">детское меню</button><a target="_blank" href="http://pushka.os/!/attach/pushka-bowling/menu/3/download" class="btn btn-default">1.07 МБ</a><button title="Удалить вложение" class="btn btn-default js-btn js-init-listjs-btndata-actionattach_clear" data-action="attach_clear"><i class="fa text-danger fa-remove"></i></button></div>
+            </div>
+        </div>
+    </div>
+    {{ adminlte__box_overlay('pennis'~i)|raw }}
+</div>
+
+

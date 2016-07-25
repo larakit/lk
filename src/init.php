@@ -42,3 +42,4 @@ if (!function_exists('rglob')) {
 include 'init/quickform.php';
 include 'init/page.php';
 include 'init/route.php';
+include 'init/crud.php';
