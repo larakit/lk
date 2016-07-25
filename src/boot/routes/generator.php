@@ -8,6 +8,11 @@ define('ROUTE_ADMIN_CODEGEN', 'larakit::admin.codegen');
     ->addSegment('{model}')
     ->put()
 ;
+define('ROUTE_ADMIN', 'larakit::admin');
+\Larakit\Route\Route::item(ROUTE_ADMIN)
+    ->setBaseUrl('/admincp/')
+    ->put()
+;
 
 \Adminlte\Widget\WidgetSidebarMenu::group('ГЕНЕРАТОР КОДА')
     ->addItem('codegen', 'Модели', ROUTE_ADMIN_CODEGEN)

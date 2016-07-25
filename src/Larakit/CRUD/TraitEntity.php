@@ -18,6 +18,7 @@ trait TraitEntity {
         $delimitters = [
             '\Models\\',
             '\Http\Controllers\\',
+            '\Controllers\\',
             '\FormFilters\\',
         ];
         $o           = get_called_class();
