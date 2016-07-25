@@ -1,0 +1,5 @@
+{% import 'quickform::macros' as laraform %}
+
+<div{{ element.attributes|raw }}>
+    {{ laraform.render_elements(element.elements, meta, is_submited) }}
+</div>

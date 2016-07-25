@@ -1,0 +1,52 @@
+{#{{ dump(tree) }}#}
+
+{% macro branch(items) %}
+    {% if items %}
+        <ul class="treeview-menu menu-open">
+            {% for key, item in items %}
+                <li{% if request_is(item.url) %} class="active"{% endif %}>
+                    <a href="{{ item.url }}">
+                        {{ _self.icon(item.route) }}
+                        {{ item.title }}
+                    </a>
+                    {{ _self.icon_collapse(item._items_) }}
+                    {{ _self.branch(item._items_) }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+{% macro icon(uri) %}
+    {% set icon = icon_by_route(uri) %}
+    {% if icon %}<i class="{{ icon }}"></i>{% endif %}
+{% endmacro %}
+{% macro badge(item) %}
+    {% if item.badge_text %}
+        <span class="label pull-right {{ item.badge_class ? : 'bg-green' }}">{{ item.badge_text }}</span>
+    {% endif %}
+{% endmacro %}
+{% macro icon_collapse(items) %}
+    {% if items %}<i class="fa fa-angle-left pull-right"></i>{% endif %}
+{% endmacro %}
+
+
+
+{% if tree %}
+    <ul class="sidebar-menu">
+        {% for group, items in tree %}
+            <li class="header">{{ group }}</li>
+            {% for key, item in items %}
+                <li class="{% if item._items_ %}treeview {% endif %}{% if request_is(item.url) %}active{% endif %}">
+                    <a href="{{ item.url }}">
+                        {{ _self.icon(item.route) }}
+                        <span>{{ item.title }}</span>
+                        {{ _self.icon_collapse(item._items_) }}
+                        {{ _self.badge(item) }}
+                    </a>
+                    {{ _self.branch(item._items_) }}
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}

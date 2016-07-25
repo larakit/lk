@@ -1,0 +1,17 @@
+<section class="content-header">
+    <h1>
+        {{ larakit_page_h1() }}
+        {% set larakit_page_h1_ext = larakit_page_h1_ext() %}
+        {% if larakit_page_h1_ext %}
+            <small>{{ larakit_page_h1_ext() }}</small>{% endif %}
+    </h1>
+    <ol class="breadcrumb">
+        {% for url, breadcrumb in larakit_page_breadcrumbs() %}
+            {% if not last %}
+                <li><a href="{{ url }}">{% if breadcrumb.icon %}<i class="{{ breadcrumb.icon }}"></i> {% endif %}{{ breadcrumb.title }}</a></li>
+            {% else %}
+                <li class="active">{{ breadcrumb.title }}</li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</section>
